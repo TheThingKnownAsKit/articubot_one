@@ -37,4 +37,15 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+  DIRECTORY models
+  DESTINATION share/${PROJECT_NAME}/models
+)
+
+install(
+  DIRECTORY worlds
+  DESTINATION share/${PROJECT_NAME}/worlds
+)
+
+
 ament_package()
