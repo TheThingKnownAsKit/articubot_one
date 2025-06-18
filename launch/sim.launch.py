@@ -50,11 +50,21 @@ def generate_launch_description():
             '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
         ]
     )
+    lidar2_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='lidar2_bridge',
+        output='screen',
+        arguments=[
+            '/lidar2@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+        ]
+    )
 
     # Launch!
     return LaunchDescription([
         rsp,
         gazebo_sim,
         spawn_robot,
-        cmd_vel_bridge
+        cmd_vel_bridge,
+        lidar2_bridge
     ])

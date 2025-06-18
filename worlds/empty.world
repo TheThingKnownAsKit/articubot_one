@@ -1,6 +1,11 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
   <world name="default">
+
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+        <render_engine>ogre2</render_engine>
+    </plugin>
+
     <!-- A global light source -->
     <include>
       <uri>file://src/articubot_one/models/Sun</uri>

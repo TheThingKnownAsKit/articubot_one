@@ -19,6 +19,10 @@
         <color rgba="0 0 0 1"/>
     </material>
 
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
 
     <!-- PROPERTIES
     it would be good to add more to RE-RASSOR. Anywhere things are repeated should be a property -->
@@ -30,7 +34,7 @@
         and the link is the finer details such as visuals, geometry, material, and reference point (origin) -->
 
 
-    <!-- BASE LINK -->
+    <!-- BASES -->
     <link name="base_link"></link>
 
 
