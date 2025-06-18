@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
-<sdf version="1.7">
+<sdf version="1.5">
   <world name="default">
     <!-- A global light source -->
     <include>
-      <uri>model://Sun</uri>
+      <uri>file://src/articubot_one/models/Sun</uri>
     </include>
     <!-- A GroundPlane -->
     <include>
-      <uri>model://Ground_Plane</uri>
+      <uri>file://src/articubot_one/models/Ground_Plane</uri>
     </include>
   </world>
 </sdf>

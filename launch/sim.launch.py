@@ -40,9 +40,21 @@ def generate_launch_description():
         ]
     )
 
+    # Bridge desired ros2 input into Gazebo
+    cmd_vel_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='cmd_vel_bridge',
+        output='screen',
+        arguments=[
+            '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
+        ]
+    )
+
     # Launch!
     return LaunchDescription([
         rsp,
         gazebo_sim,
         spawn_robot,
+        cmd_vel_bridge
     ])

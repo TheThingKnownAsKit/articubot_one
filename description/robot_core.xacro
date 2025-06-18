@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
     <!-- MATERIALS -->
     <material name="white">
         <color rgba="1 1 1 1"/>
@@ -18,7 +19,9 @@
         <color rgba="0 0 0 1"/>
     </material>
 
-    <!-- PROPERTIES (it would be good to add more to RE-RASSOR) -->
+
+    <!-- PROPERTIES
+    it would be good to add more to RE-RASSOR. Anywhere things are repeated should be a property -->
     <xacro:property name="wheel_radius" value="0.04"/>
     <xacro:property name="wheel_length" value="0.05"/>
     <xacro:property name="caster_wheel_radius" value="0.05"/>
@@ -26,8 +29,10 @@
     <!-- Essentially, a joint is the initial declaration (focused on relationship to other joints)
         and the link is the finer details such as visuals, geometry, material, and reference point (origin) -->
 
+
     <!-- BASE LINK -->
     <link name="base_link"></link>
+
 
     <!-- CHASSIS -->
     <joint name="chassis_joint" type="fixed">
@@ -56,6 +61,11 @@
         </xacro:inertial_box>
     </link>
 
+    <gazebo reference="chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+
     <!-- LEFT WHEEL -->
     <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
@@ -80,6 +90,11 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
 
     <!-- RIGHT WHEEL -->
     <joint name="right_wheel_joint" type="continuous">
@@ -106,6 +121,11 @@
         </xacro:inertial_cylinder>
     </link>
 
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
     <!-- CASTER WHEEL -->
     <joint name="caster_wheel_joint" type="fixed">
         <parent link="chassis"/>
@@ -129,5 +149,12 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_sphere>
     </link>
+
+    <gazebo reference="caster_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
 
 </robot>
