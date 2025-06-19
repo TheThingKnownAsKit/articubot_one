@@ -1,0 +1,7 @@
+services:
+  docker_git:
+    build: .
+    tty: true
+    volumes:
+    - ${HOME}/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro
+    - ${HOME}/.gitconfig:/root/.gitconfig
