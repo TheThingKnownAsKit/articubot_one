@@ -5,6 +5,7 @@
     "--network=host",
     "--ipc=host",
     "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--device", "/dev/dri",
     "--env", "DISPLAY=${localEnv:DISPLAY}",
     "-v", "/dev/input:/dev/input",
     "--device-cgroup-rule", "c 13:* rmw",
@@ -30,6 +31,9 @@
   },
   "containerEnv": {
     "GZ_PARTITION": "articubot",
-    "GZ_SIM_RESOURCE_PATH": "${containerWorkspaceFolder}/src/models"
+    "IGN_PARTITION": "articubot",
+    "QT_QPA_PLATFORM": "xcb",
+    "XDG_RUNTIME_DIR": "/tmp/runtime-${user}",
+    "GZ_SIM_RESOURCE_PATH": "/articubot_one/install/articubot_one/share/articubot_one/models"
   } 
 }
