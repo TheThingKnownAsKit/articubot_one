@@ -1,8 +1,0 @@
--- Install configuration: ""
--- Up-to-date: /articubot_one/install/articubot_one/share/articubot_one/config
--- Up-to-date: /articubot_one/install/articubot_one/share/articubot_one/config/empty.yaml
-[31mCMake Error at cmake_install.cmake:46 (file):
-  file INSTALL cannot find "/articubot_one/description": No such file or
-  directory.
-
-[0m
