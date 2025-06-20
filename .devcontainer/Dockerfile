@@ -1,6 +1,14 @@
 FROM osrf/ros:jazzy-desktop
 
-WORKDIR /container
+# Install required packages as root
+USER root
+RUN apt-get update && apt-get install -y \
+    # ROS 2 control stack
+    ros-${ROS_DISTRO}-ros2-control \
+    ros-${ROS_DISTRO}-ros2-controllers \
+    # ROS–Gazebo integration
+    ros-${ROS_DISTRO}-ros-gz \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Add ubuntu user with same UID and GID as your host system, if it doesn't already exist
 # Since Ubuntu 24.04, a non-root user is created by default with the name vscode and UID=1000

@@ -1,0 +1,6 @@
+Invoking command in '/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /articubot_one -DCMAKE_INSTALL_PREFIX=/articubot_one/install/articubot_one
+Invoked command in '/articubot_one/build/articubot_one' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /articubot_one -DCMAKE_INSTALL_PREFIX=/articubot_one/install/articubot_one
+Invoking command in '/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /articubot_one/build/articubot_one -- -j16 -l16
+Invoked command in '/articubot_one/build/articubot_one' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /articubot_one/build/articubot_one -- -j16 -l16
+Invoking command in '/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /articubot_one/build/articubot_one
+Invoked command in '/articubot_one/build/articubot_one' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /articubot_one/build/articubot_one

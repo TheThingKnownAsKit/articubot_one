@@ -2,8 +2,17 @@
   "name": "dev-articubot",
   "dockerFile": "Dockerfile",
   "runArgs": [
-    "--privileged",
-    "--network=host"
+    "--network=host",
+    "--ipc=host",
+    "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--env", "DISPLAY=${localEnv:DISPLAY}",
+    "-v", "/dev/input:/dev/input",
+    "--device-cgroup-rule", "c 13:* rmw",
+    "-v", "/dev/bus/usb:/dev/bus/usb",
+    "--device-cgroup-rule", "c 189:* rmw",
+    "-v", "/dev:/dev",
+    "--device-cgroup-rule", "c 166:* rmw",
+    "--device", "/dev/dri"
   ],
   "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
   "workspaceFolder": "/${localWorkspaceFolderBasename}",
@@ -18,5 +27,9 @@
         "ms-python.python"
       ]
     }
-  }
+  },
+  "containerEnv": {
+    "GZ_PARTITION": "articubot",
+    "GZ_SIM_RESOURCE_PATH": "${containerWorkspaceFolder}/src/models"
+  } 
 }

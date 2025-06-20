@@ -33,19 +33,8 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config description launch worlds
+  DIRECTORY config src/description src/launch src/worlds src/models
   DESTINATION share/${PROJECT_NAME}
 )
-
-install(
-  DIRECTORY models
-  DESTINATION share/${PROJECT_NAME}/models
-)
-
-install(
-  DIRECTORY worlds
-  DESTINATION share/${PROJECT_NAME}/worlds
-)
-
 
 ament_package()
