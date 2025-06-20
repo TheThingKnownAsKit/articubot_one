@@ -34,6 +34,6 @@
     "IGN_PARTITION": "articubot",
     "QT_QPA_PLATFORM": "xcb",
     "XDG_RUNTIME_DIR": "/tmp/runtime-${user}",
-    "GZ_SIM_RESOURCE_PATH": "/articubot_one/install/articubot_one/share/articubot_one/models"
+    "GZ_SIM_RESOURCE_PATH": "/articubot_one/install/articubot_one/share/models"
   } 
 }
