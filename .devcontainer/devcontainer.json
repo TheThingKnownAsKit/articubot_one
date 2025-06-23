@@ -1,11 +1,10 @@
 {
   "name": "ROS2 Jazzy Dev",
   "dockerComposeFile": [
-    "../docker-compose.yaml"
+    "./docker-compose.yaml"
   ],
   "service": "dev",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/articubot_one,type=bind,consistency=cached",
-  "workspaceFolder": "/workspace/articubot_one",
+  "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
   "shutdownAction": "stopCompose",  // stop containers on closing
   "customizations": {
     "vscode": {

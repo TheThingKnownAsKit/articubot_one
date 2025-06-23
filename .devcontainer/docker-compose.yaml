@@ -1,13 +1,13 @@
 services:
   dev:
     build:
-      context: .                 # build context is the root workspace directory
-      dockerfile: Dockerfile
+      context: ..                 # build context is the root workspace directory
+      dockerfile: .devcontainer/Dockerfile
     image: articubot_one:latest  # tag the image (optional)
     container_name: articubot_dev
     # Mount the workspace into the container (for live development)
     volumes:
-      - ..:/workspace:rw    # Mount the project root (parent of .devcontainer) to /workspace in container
+      - ../..:/workspace:rw    # Mount the project root (parent of .devcontainer) to /workspace in container
       - /tmp/.X11-unix:/tmp/.X11-unix:rw   # Mount X11 socket for GUI apps (Linux host)
     environment:
       - DISPLAY=${DISPLAY}         # Forward host X display (for GUI)

@@ -1,6 +1,9 @@
 services:
   dev:
     runtime: nvidia          # Jetson has the NVIDIA runtime pre-enabled
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
