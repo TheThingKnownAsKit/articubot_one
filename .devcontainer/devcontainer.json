@@ -1,8 +1,11 @@
 {
-  "name": "ROS2 Jazzy Articubot Devcontainer",
-  "dockerComposeFile": "../docker-compose.yaml",
+  "name": "ROS2 Jazzy Dev",
+  "dockerComposeFile": [
+    "../docker-compose.yaml"
+  ],
   "service": "dev",
-  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/articubot_one,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace/articubot_one",
   "shutdownAction": "stopCompose",  // stop containers on closing
   "customizations": {
     "vscode": {
@@ -12,17 +15,6 @@
             "ms-python.python"
         ]
     }
-  },
-  // Mount local SSH agent socket if available (optional, for another way to use host SSH)
-  // "mounts": [
-  //     "source=${env:SSH_AUTH_SOCK},target=/tmp/ssh-agent.sock,type=bind"
-  // ],
-  // "remoteEnv": {
-  //     "SSH_AUTH_SOCK": "/tmp/ssh-agent.sock"
-  // },
-  "settings": {
-      // Optional: ROS/C++ settings for the container (if using VSCode ROS extensions, etc.)
-      //"ros.distro": "jazzy"
   },
   "runArgs": [
     "--gpus", "all"

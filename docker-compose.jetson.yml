@@ -1,0 +1,9 @@
+services:
+  dev:
+    runtime: nvidia          # Jetson has the NVIDIA runtime pre-enabled
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    # Optional: if Jetson needs privileged camera / GPU nodes
+    device_cgroup_rules:
+      - 'c 195:* rmw'

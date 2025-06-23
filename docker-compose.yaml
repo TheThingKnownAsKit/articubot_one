@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   dev:
     build:
@@ -12,11 +11,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw   # Mount X11 socket for GUI apps (Linux host)
     environment:
       - DISPLAY=${DISPLAY}         # Forward host X display (for GUI)
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=all    # Ensure all GPU capabilities are exposed
     network_mode: host            # Use host networking for ROS 2 (enables multicast DDS discovery)
-    # Enable NVIDIA GPU support
-    runtime: nvidia
     tty: true
     stdin_open: true
 

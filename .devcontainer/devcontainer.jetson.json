@@ -1,0 +1,21 @@
+{
+  "name": "ROS2 Jazzy Dev – Jetson",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../docker-compose.jetson.yml"
+  ],
+  "service": "dev",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+            "ms-vscode.cpptools",
+            "ms-vscode.cmake-tools",
+            "ms-python.python"
+        ]
+    }
+  },
+  "runArgs": ["--gpus", "all"]
+}
