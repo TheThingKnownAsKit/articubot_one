@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>articubot_one</name>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <description>ROS 2 Jazzy workspace for Articubot One - URDF simulation in Gazebo</description>
   <maintainer email="you@example.com">Your Name</maintainer>
   <license>Apache-2.0</license>
