@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <world name="default">
+  <world name="empty_plane">
 
     <plugin filename="gz-sim-physics-system"
             name="gz::sim::systems::Physics"/>
@@ -8,6 +8,8 @@
             name="gz::sim::systems::SceneBroadcaster"/>
     <plugin filename="gz-sim-sensors-system"
             name="gz::sim::systems::Sensors">
+    <plugin filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands"/>
     <render_engine>ogre2</render_engine>
     </plugin>
 
