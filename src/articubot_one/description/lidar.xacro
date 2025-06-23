@@ -27,7 +27,7 @@
     </link>
 
 <gazebo reference="laser">
-  <sensor name="lidar2" type="lidar">
+  <sensor name="lidar2" type="ray">
     <pose>0 0 0 0 0 0</pose>
     <always_on>true</always_on>
     <update_rate>10</update_rate>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>articubot_one</name>
+  <version>0.0.1</version>
+  <description>ROS 2 Jazzy workspace for Articubot One - URDF simulation in Gazebo</description>
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build tool dependency -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
+  <depend>gz_ros2_control</depend>
+  <depend>rclcpp</depend>              <!-- (if you have C++ nodes, not used in this example) -->
+  <depend>launch</depend>             <!-- for using launch files -->
+  <depend>urdf</depend>               <!-- URDF parser, if needed -->
+  <!-- Note: rviz and gazebo are generally not directly depended in package.xml, 
+       since we run them externally. -->
+
+  <!-- Test dependencies (optional) -->
+  <!-- <test_depend>...</test_depend> -->
+
+  <export>
+    <!-- No special export tags needed, but we could add gazebo_model_path here if we had custom Gazebo models -->
+  </export>
+</package>

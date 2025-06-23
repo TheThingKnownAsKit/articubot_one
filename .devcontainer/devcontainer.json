@@ -1,39 +1,30 @@
 {
-  "name": "dev-articubot",
-  "dockerFile": "Dockerfile",
-  "runArgs": [
-    "--network=host",
-    "--ipc=host",
-    "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
-    "--device", "/dev/dri",
-    "--env", "DISPLAY=${localEnv:DISPLAY}",
-    "-v", "/dev/input:/dev/input",
-    "--device-cgroup-rule", "c 13:* rmw",
-    "-v", "/dev/bus/usb:/dev/bus/usb",
-    "--device-cgroup-rule", "c 189:* rmw",
-    "-v", "/dev:/dev",
-    "--device-cgroup-rule", "c 166:* rmw",
-    "--device", "/dev/dri"
-  ],
-  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
-  "workspaceFolder": "/${localWorkspaceFolderBasename}",
-  "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"
-  ],
+  "name": "ROS2 Jazzy Articubot Devcontainer",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",  // stop containers on closing
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
-        "ms-python.python"
-      ]
+            "ms-vscode.cpptools",
+            "ms-vscode.cmake-tools",
+            "ms-python.python"
+        ]
     }
   },
-  "containerEnv": {
-    "GZ_PARTITION": "articubot",
-    "IGN_PARTITION": "articubot",
-    "QT_QPA_PLATFORM": "xcb",
-    "XDG_RUNTIME_DIR": "/tmp/runtime-${user}",
-    "GZ_SIM_RESOURCE_PATH": "/articubot_one/install/articubot_one/share/models"
-  } 
+  // Mount local SSH agent socket if available (optional, for another way to use host SSH)
+  // "mounts": [
+  //     "source=${env:SSH_AUTH_SOCK},target=/tmp/ssh-agent.sock,type=bind"
+  // ],
+  // "remoteEnv": {
+  //     "SSH_AUTH_SOCK": "/tmp/ssh-agent.sock"
+  // },
+  "settings": {
+      // Optional: ROS/C++ settings for the container (if using VSCode ROS extensions, etc.)
+      //"ros.distro": "jazzy"
+  },
+  "runArgs": [
+    "--gpus", "all"
+  ]
 }

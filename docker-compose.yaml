@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  dev:
+    build:
+      context: .                 # build context is the root workspace directory
+      dockerfile: Dockerfile
+    image: articubot_one:latest  # tag the image (optional)
+    container_name: articubot_dev
+    # Mount the workspace into the container (for live development)
+    volumes:
+      - ..:/workspace:rw    # Mount the project root (parent of .devcontainer) to /workspace in container
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw   # Mount X11 socket for GUI apps (Linux host)
+    environment:
+      - DISPLAY=${DISPLAY}         # Forward host X display (for GUI)
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all    # Ensure all GPU capabilities are exposed
+    network_mode: host            # Use host networking for ROS 2 (enables multicast DDS discovery)
+    # Enable NVIDIA GPU support
+    runtime: nvidia
+    tty: true
+    stdin_open: true
+
+  docker_git:
+    image: alpine/git:latest      # Small image with git
+    container_name: articubot_git
+    volumes:
+      - ~/.ssh:/root/.ssh:ro      # Mount host SSH keys (read-only)
+      - ~/.gitconfig:/root/.gitconfig:ro  # Mount host Git config (read-only)
+    network_mode: host            # share network (optional; not strictly needed for git)
+    entrypoint: "/bin/sh"
+    # This container is used on-demand for Git operations, e.g.:
+    # `docker-compose run docker_git git push`
