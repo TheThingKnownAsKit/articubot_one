@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from ament_index_python import get_package_share_directory
 import launch
 from launch.actions import IncludeLaunchDescription, ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -8,21 +9,19 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # Determine path to the robot URDF file
-    pkg_share = os.environ.get('COLCON_PREFIX_PATH', '').split(':')
-    # Find the first path that ends with our package name
-    pkg_path = None
-    for p in pkg_share:
-        if p.endswith('articubot_one'):
-            pkg_path = p
-            break
-    urdf_file = os.path.join(pkg_path, 'share/articubot_one/description/robot.urdf.xacro')
-    assert os.path.exists(urdf_file), f"URDF file not found: {urdf_file}"
+    pkg_prefix = get_package_share_directory("articubot_one")
+    ros_gz_prefix = get_package_share_directory("ros_gz_sim")
+
+    urdf_file  = os.path.join(pkg_prefix, "description", "robot.urdf.xacro")
+    world_file = os.path.join(pkg_prefix, "worlds", "empty_plane.world")
 
     # Launch Gazebo Sim (Harmonic)
     gazebo_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([Path(os.environ['COLCON_PREFIX_PATH'].split(':')[0]) / 'share' / 'ros_gz_sim' / 'launch' / 'gz_sim.launch.py']),
+        PythonLaunchDescriptionSource(
+            os.path.join(ros_gz_prefix, "launch", "gz_sim.launch.py")
+        ),
         launch_arguments={
-            'gz_args': '-r -v 4 empty.sdf'.format()  # Launch empty world (-r for headless if you want no GUI; remove -r for GUI)
+            'gz_args': f'-v 4 {world_file}'  # Launch empty world (-r for headless if you want no GUI; remove -r for GUI)
         }.items()
     )
 

@@ -24,7 +24,7 @@ if(BUILD_TESTING)
 endif()
 
 # Install needed folders to share/${PROJECT_NAME}
-install(DIRECTORY launch description, config, models, worlds
+install(DIRECTORY launch description config worlds models
   DESTINATION share/${PROJECT_NAME}
 )
 

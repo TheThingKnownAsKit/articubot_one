@@ -25,6 +25,7 @@
   <!-- <test_depend>...</test_depend> -->
 
   <export>
-    <!-- No special export tags needed, but we could add gazebo_model_path here if we had custom Gazebo models -->
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
   </export>
 </package>
