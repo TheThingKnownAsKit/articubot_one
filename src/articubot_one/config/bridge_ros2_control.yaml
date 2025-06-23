@@ -1,0 +1,37 @@
+# articubot_one/config/bridge_ros2_control.yaml
+# ----------------  TOP-LEVEL IS A YAML SEQUENCE  -----------------
+- ros_topic_name: /clock
+  gz_topic_name:  /clock
+  ros_type_name:  rosgraph_msgs/msg/Clock
+  gz_type_name:   gz.msgs.Clock
+  direction:      GZ_TO_ROS             # clock is read-only in ROS
+
+- ros_topic_name: /cmd_vel
+  gz_topic_name:  /cmd_vel
+  ros_type_name:  geometry_msgs/msg/Twist
+  gz_type_name:   gz.msgs.Twist         # default: BIDIRECTIONAL
+
+- ros_topic_name: /lidar2
+  gz_topic_name:  /lidar2
+  ros_type_name:  sensor_msgs/msg/LaserScan
+  gz_type_name:   gz.msgs.LaserScan
+  direction:      GZ_TO_ROS
+
+# ---------- service bridges (same file, still a sequence) ----------
+- ros_service_name:          /world/empty_plane/create
+  gz_service_name:           /world/empty_plane/create
+  ros_service_type:          ros_gz_interfaces/srv/SpawnEntity
+  gz_service_request_type:   gz.msgs.EntityFactory
+  gz_service_response_type:  gz.msgs.Boolean
+
+- ros_service_name:          /world/empty_plane/remove
+  gz_service_name:           /world/empty_plane/remove
+  ros_service_type:          ros_gz_interfaces/srv/DeleteEntity
+  gz_service_request_type:   gz.msgs.Entity
+  gz_service_response_type:  gz.msgs.Boolean
+
+- ros_service_name:          /world/empty_plane/set_pose
+  gz_service_name:           /world/empty_plane/set_pose
+  ros_service_type:          ros_gz_interfaces/srv/SetEntityPose
+  gz_service_request_type:   gz.msgs.Pose_V
+  gz_service_response_type:  gz.msgs.Boolean

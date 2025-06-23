@@ -7,9 +7,8 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(xacro REQUIRED)
+find_program(GZ_EXECUTABLE gz)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -24,7 +23,7 @@ if(BUILD_TESTING)
 endif()
 
 # Install needed folders to share/${PROJECT_NAME}
-install(DIRECTORY launch description config worlds models
+install(DIRECTORY launch description config worlds models scripts
   DESTINATION share/${PROJECT_NAME}
 )
 
