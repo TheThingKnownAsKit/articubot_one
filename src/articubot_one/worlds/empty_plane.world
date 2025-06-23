@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sdf version="1.5">
+<sdf version="1.7">
   <world name="empty_plane">
 
     <plugin filename="gz-sim-physics-system"
@@ -7,19 +7,14 @@
     <plugin filename="gz-sim-scene-broadcaster-system"
             name="gz::sim::systems::SceneBroadcaster"/>
     <plugin filename="gz-sim-sensors-system"
-            name="gz::sim::systems::Sensors">
+            name="gz::sim::systems::Sensors"/>
+
+    <!--  **Add the plugin here, not inside Sensors**  -->
     <plugin filename="gz-sim-user-commands-system"
             name="gz::sim::systems::UserCommands"/>
-    <render_engine>ogre2</render_engine>
-    </plugin>
 
-    <!-- A global light source -->
-    <include>
-      <uri>model://Sun</uri>
-    </include>
-    <!-- A GroundPlane -->
-    <include>
-      <uri>model://Ground_Plane</uri>
-    </include>
+    <include><uri>model://Sun</uri></include>
+    <include><uri>model://Ground_Plane</uri></include>
+
   </world>
 </sdf>
