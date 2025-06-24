@@ -1,11 +1,12 @@
 {
-  "name": "ROS2 Jazzy Dev",
+  "name": "ROS2 Jazzy Dev – Jetson",
   "dockerComposeFile": [
-    "./docker-compose.yaml"
+    "./docker-compose.yml",
+    "./docker-compose.jetson.yml"
   ],
   "service": "dev",
   "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
-  "shutdownAction": "stopCompose",  // stop containers on closing
+  "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,7 +16,5 @@
         ]
     }
   },
-  "runArgs": [
-    "--gpus", "all"
-  ]
+  "runArgs": ["--gpus", "all"]
 }
