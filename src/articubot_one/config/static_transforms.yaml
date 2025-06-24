@@ -1,0 +1,5 @@
+static_transform_broadcasters:
+  - frame_id: "camera_link"
+    child_frame_id: "camera_link_optical"
+    translation: [0.0, 0.0, 0.0]
+    rotation: [ -1.5708, 0.0, -1.5708 ]  # x=-pi/2, z=-pi/2

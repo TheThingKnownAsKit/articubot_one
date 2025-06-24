@@ -39,6 +39,12 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}],
     )
 
+    static_transforms_pub = Node(package='tf2_ros',
+        executable='static_transform_publisher',
+        name='cam_optical_broadcaster',
+        arguments=['0','0','0','-1.5708','0','-1.5708',
+                    'camera_link','camera_link_optical'])
+
     # Launch!
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -47,5 +53,6 @@ def generate_launch_description():
             description='Use sim time if true'),
 
         node_robot_state_publisher,
-        joint_pub
+        joint_pub,
+        static_transforms_pub
     ])
