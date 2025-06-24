@@ -30,3 +30,4 @@ diff_cont:
     # Behaviour ------------------------------------------------------
     publish_rate: 30.0            # [Hz] odom & TF throttling
     use_stamped_vel: false        # expect geometry_msgs/Twist on /cmd_vel_unstamped
+    open_loop:        true        # ← avoids zero-feedback stall
