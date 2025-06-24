@@ -13,7 +13,8 @@
             "ms-python.python",
             "github.vscode-pull-request-github",
             "smilerobotics.urdf",
-            "morningfrog.urdf-visualizer"
+            "morningfrog.urdf-visualizer",
+            "ms-vscode.cmake-tools"
         ]
     }
   },
