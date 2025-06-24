@@ -26,7 +26,7 @@
 
     <gazebo>
         <plugin filename="libgz_ros2_control-system.so"
-          name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+                name="gz_ros2_control::GazeboSimROS2ControlPlugin"/>
         <parameters>$(find articubot_one)/config/sim_controllers.yaml</parameters>
     </gazebo>
 
