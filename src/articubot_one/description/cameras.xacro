@@ -44,24 +44,31 @@
             <always_on>true</always_on>
             <visualize>true</visualize>        <!-- Enable camera view in Gazebo client -->
             <update_rate>10</update_rate>      <!-- 10 Hz publish rate -->
-            <!--<topic>camera/image_raw</topic>-->    <!-- Gazebo Transport topic for images, NO DEPTH -->
-            <topic>depth/image</topic>    <!-- Gazebo Transport topic for images, YES DEPTH -->
-            <point_cloud_topic>trye</point_cloud_topic> <!-- ONLY FOR DEPTH SENSING CAMERAS, COMMENT OUT OTHERWISE -->
             <camera name="robot_camera">
-            <!--<camera_info_topic>camera/camera_info</camera_info_topic>--> <!-- For no depth -->
-            <camera_info_topic>depth/camera_info</camera_info_topic> <!-- For yes depth -->
+
+            <!--<topic>camera/image_raw</topic>-->    <!-- Gazebo Transport topic for images, NO DEPTH -->
+            <topic>camera/depth/image_raw</topic>    <!-- Gazebo Transport topic for images, YES DEPTH -->
+            <!--<topic>camera</topic>-->                    <!-- Gazebo Transport topic for images, YES DEPTH YES RGB -->
+
+            <!--<camera_info_topic>camera/camera_info</camera_info_topic>--> <!-- For no depth AND for yes depth yes rgb -->
+            <camera_info_topic>camera/depth/camera_info</camera_info_topic> <!-- For yes depth -->
+
             <horizontal_fov>1.089</horizontal_fov>      <!-- ~62.4 degrees HFOV -->
             <image>
                 <width>640</width>
                 <height>480</height>
-               <!-- <format>R8G8B8</format>-->                   <!-- 8-bit RGB image, for no depth, also used for rgbd_camera -->
-                <format>DEPTH16</format>                   <!-- 32-bit float depth, only use one of these. Use -->
+                <format>R8G8B8</format>                   <!-- 8-bit RGB image -->
             </image>
             <clip>
                 <near>0.05</near>
                 <far>8.0</far>
             </clip>
             </camera>
+            <!-- THE BELOW IS ONLY FOR DEPTH + RGB CAMERAS -->
+            <!-- <baseline>0.2</baseline>
+            <pointCloudCutoff>0.5</pointCloudCutoff>
+            <pointCloudCutoffMax>5.0</pointCloudCutoffMax> -->
+            <!-- (distortion parameters, etc., can be added as needed) -->
         </sensor>
     </gazebo>
 
