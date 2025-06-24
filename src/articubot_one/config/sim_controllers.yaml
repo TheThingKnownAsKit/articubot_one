@@ -1,27 +1,32 @@
 controller_manager:
-  ros_parameters:
-    update_rate: 30
+  ros__parameters:               # ← double underscore is mandatory
+    update_rate: 30              # [Hz] control loop
     use_sim_time: true
 
+    # --- Controller plugins to be loaded ---------------------------
     diff_cont:
       type: diff_drive_controller/DiffDriveController
-    
+
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
+      # optional broadcaster parameters
+      publish_rate: 50.0
 
+# -------------------------------------------------------------------
 diff_cont:
   ros__parameters:
-
-    publish_rate: 30.0 # You can set this higher than the controller manager update rate, but it will be throttled
+    # TF / odometry --------------------------------------------------
     base_frame_id: base_link
+    odom_frame_id: odom
+    enable_odom_tf: true          # publish odom→base_link TF
+    cmd_vel_timeout: 0.5          # [s] watchdog
 
-    left_wheel_names: ['left_wheel_joint']
+    # Wheel geometry -------------------------------------------------
+    left_wheel_names:  ['left_wheel_joint']
     right_wheel_names: ['right_wheel_joint']
-    wheel_separation: 0.35
-    wheel_radius: 0.05
+    wheel_separation: 0.35        # [m]
+    wheel_radius:     0.05        # [m]
 
-    use_stamped_vel: false
-
-# Commented out because it is not needed for mobile robots. This is for wheel encoders
-# joint_broad:
-#   ros__parameters:
+    # Behaviour ------------------------------------------------------
+    publish_rate: 30.0            # [Hz] odom & TF throttling
+    use_stamped_vel: false        # expect geometry_msgs/Twist on /cmd_vel_unstamped
