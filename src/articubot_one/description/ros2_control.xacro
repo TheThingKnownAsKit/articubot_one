@@ -3,7 +3,7 @@
 
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
-            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
         <!-- Describe ALL joints to be controlled -->
         <joint name="left_wheel_joint">
@@ -27,7 +27,7 @@
     <gazebo>
         <plugin filename="libgz_ros2_control-system.so"
           name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-        <parameters>$(find articubot_one)/config/controllers.yaml</parameters>
+        <parameters>$(find articubot_one)/config/sim_controllers.yaml</parameters>
     </gazebo>
 
 </robot>
