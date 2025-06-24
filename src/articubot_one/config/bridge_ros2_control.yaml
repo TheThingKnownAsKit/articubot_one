@@ -17,6 +17,13 @@
   gz_type_name:   gz.msgs.LaserScan
   direction:      GZ_TO_ROS
 
+- ros_topic_name: /odom
+  gz_topic_name: /odom
+  ros_type_name: nav_msgs/msg/Odometry
+  gz_type_name: gz.msgs.Odometry
+  direction: GZ_TO_ROS
+
+
 # If using a depth AND rgb sensing camera:
 - ros_topic_name: "/camera/image"
   gz_topic_name: "/camera/image"

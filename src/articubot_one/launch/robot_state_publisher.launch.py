@@ -31,20 +31,6 @@ def generate_launch_description():
         }]
     )
 
-    # Publish all the joints (mostly needed for optical joint)
-    joint_pub = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        parameters=[{'use_sim_time': use_sim_time}],
-    )
-
-    static_transforms_pub = Node(package='tf2_ros',
-        executable='static_transform_publisher',
-        name='cam_optical_broadcaster',
-        arguments=['0','0','0','-1.5708','0','-1.5708',
-                    'camera_link','camera_link_optical'])
-
     # Launch!
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -52,7 +38,5 @@ def generate_launch_description():
             default_value='false',
             description='Use sim time if true'),
 
-        node_robot_state_publisher,
-        joint_pub,
-        static_transforms_pub
+        node_robot_state_publisher
     ])

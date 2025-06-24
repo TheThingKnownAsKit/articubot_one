@@ -72,11 +72,18 @@ def generate_launch_description():
             'entity_name': 'rover',
             'x': '0.0', 'y': '0.0', 'z': '0.10'
         }.items())
+    
+    # ────────────────────────────── Create a robot_state_publisher node
+    rsp = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(pkg_bot, 'launch', 'robot_state_publisher.launch.py')]),
+        launch_arguments={'use_sim_time': 'true'}.items()
+    )
 
     # ───────────────────────────────── Launch description
     return LaunchDescription([
         declare_world,
         gz_sim,
         bridge,
-        spawn
+        spawn,
+        rsp
     ])
