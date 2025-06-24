@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-${ROS_DISTRO}-ros2-controllers \
     # ROS–Gazebo integration
     ros-${ROS_DISTRO}-ros-gz \
+    ros-${ROS_DISTRO}-rplidar-ros \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Nvidia userspace library matching host driver
