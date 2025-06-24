@@ -42,9 +42,9 @@ def generate_launch_description():
             PathJoinSubstitution([pkg_rosgz, 'launch', 'gz_sim.launch.py'])),
         launch_arguments={
             # docs: pass extra cmd-line args with `gz_args` :contentReference[oaicite:0]{index=0}
-            'gz_args': PathJoinSubstitution([
+            'gz_args': ['-r', PathJoinSubstitution([
                 pkg_bot, 'worlds', LaunchConfiguration('world')
-            ])
+            ])]
         }.items())
 
     # ────────────────────────────── ROS–Gazebo bridge from YAML
@@ -79,11 +79,20 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': 'true'}.items()
     )
 
+    # ────────────────────────────── Spawn the controllers
+    joint_broad_node = Node(package='controller_manager', executable='spawner',
+        arguments=['joint_broad', '--controller-manager', '-c', '/controller_manager']),
+    diff_cont_node = Node(package='controller_manager', executable='spawner',
+        arguments=['diff_cont', '--controller-manager', '-c', '/controller_manager']),
+
+
     # ───────────────────────────────── Launch description
     return LaunchDescription([
         declare_world,
         gz_sim,
         bridge,
         spawn,
-        rsp
+        rsp,
+        joint_broad_node,
+        diff_cont_node
     ])
