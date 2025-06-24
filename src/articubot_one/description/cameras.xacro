@@ -44,6 +44,8 @@
             <always_on>true</always_on>
             <visualize>true</visualize>        <!-- Enable camera view in Gazebo client -->
             <update_rate>20</update_rate>      <!-- 10 Hz publish rate -->
+            <gz_frame_id>camera_link</gz_frame_id>
+            <frame_id>camera_link</frame_id>
             <topic>camera</topic>                    <!-- Gazebo Transport topic for images, YES DEPTH YES RGB -->
             <camera name="robot_camera">
                 <camera_info_topic>camera/camera_info</camera_info_topic> <!-- For no depth AND for yes depth yes rgb -->
