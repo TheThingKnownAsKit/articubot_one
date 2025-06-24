@@ -37,16 +37,15 @@ def generate_launch_description():
         description='World SDF file, relative to my_robot_pkg/worlds')
 
     # ────────────────────────────── Gazebo (server + GUI)
+    world_path = PathJoinSubstitution([pkg_bot, 'worlds', LaunchConfiguration('world')])
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([pkg_rosgz, 'launch', 'gz_sim.launch.py'])),
+            PathJoinSubstitution([pkg_rosgz, 'launch', 'gz_sim.launch.py'])
+        ),
         launch_arguments={
-            # docs: pass extra cmd-line args with `gz_args` :contentReference[oaicite:0]{index=0}
-            'gz_args': PathJoinSubstitution([
-                '-r', pkg_bot, 'worlds', LaunchConfiguration('world')
-            ])
-        }.items())
-
+            'gz_args': ['-r ', world_path]          # space after -r is important
+        }.items()
+)
     # ────────────────────────────── ROS–Gazebo bridge from YAML
     bridge = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
