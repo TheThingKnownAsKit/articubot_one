@@ -3,13 +3,13 @@
 
 
     <!-- 2D LIDAR -->
-    <joint name="laser_joint" type="fixed">
+    <joint name="lidar_joint" type="fixed">
         <parent link="chassis"/>
-        <child link="laser"/>
+        <child link="lidar_link"/>
         <origin xyz="0.1 0 0.175" rpy="0 0 0"/>
     </joint>
 
-    <link name="laser">
+    <link name="lidar_link">
         <visual>
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
@@ -26,38 +26,37 @@
         </xacro:inertial_cylinder>
     </link>
 
-<gazebo reference="laser">
-  <sensor name="lidar2" type="ray">
-    <pose>0 0 0 0 0 0</pose>
-    <always_on>true</always_on>
-    <update_rate>10</update_rate>
-    <visualize>true</visualize>
-    <topic>lidar2</topic>
-    <ray>
+    <gazebo reference="lidar_link">
+    <sensor name="lidar_sensor" type="gpu_lidar">
+        <update_rate>10</update_rate>               <!-- 10 Hz scanning frequency -->
+        <topic>lidar2</topic>                      <!-- Gazebo transport topic name -->
+        <gz_frame_id>lidar_link</gz_frame_id>      <!-- frame ID for Gazebo messages -->
+        <lidar>
         <scan>
             <horizontal>
-                <samples>360</samples>
-                <resolution>1</resolution>
-                <min_angle>-3.14</min_angle>
-                <max_angle>3.14</max_angle>
+            <samples>720</samples>               <!-- e.g. 720 beams over 360° -->
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>      <!-- -180 degrees -->
+            <max_angle>3.14159</max_angle>       <!-- +180 degrees -->
             </horizontal>
-            <!-- <vertical>
-                <samples>1</samples>
-                <resolution>0.01</resolution>            only used if its a 3d lidar
-                <min_angle>0</min_angle>
-                <max_angle>0</max_angle>
-            </vertical> -->
+            <!-- (Optional) vertical block for 3D LiDAR -->
         </scan>
         <range>
-            <min>0.3</min>
-            <max>12</max>
-            <resolution>0.01</resolution>
+            <min>0.05</min>                        <!-- 5 cm minimum range -->
+            <max>10.0</max>                        <!-- 10 m maximum range -->
+            <resolution>0.01</resolution>          <!-- range resolution 1 cm -->
         </range>
-    </ray>
-    <always_on>1</always_on>
-    <visualize>true</visualize>
-  </sensor>
-</gazebo>
+        <noise>
+            <type>gaussian</type>                  <!-- simulate noise in measurements -->
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>                  <!-- standard deviation of noise -->
+        </noise>
+        <frame_id>lidar_link</frame_id>          <!-- frame for ROS messages -->
+        </lidar>
+        <always_on>1</always_on>
+        <visualize>true</visualize>
+    </sensor>
+    </gazebo>
 
 
 </robot>
