@@ -11,7 +11,9 @@
       "extensions": [
             "ms-vscode.cpptools",
             "ms-python.python",
-            "github.vscode-pull-request-github"
+            "github.vscode-pull-request-github",
+            "smilerobotics.urdf",
+            "morningfrog.urdf-visualizer"
         ]
     }
   },
