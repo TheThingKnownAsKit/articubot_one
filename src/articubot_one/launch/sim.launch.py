@@ -84,12 +84,12 @@ def generate_launch_description():
         package='controller_manager',
         executable='spawner',
         arguments=[
-            'joint_broad', '--controller-manager', '-c', '/controller_manager'
+            'joint_broad', '-c', '/controller_manager'
     ])
     diff_cont_node = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['diff_cont', '--controller-manager', '-c', '/controller_manager'
+        arguments=['diff_cont', '-c', '/controller_manager'
     ])
 
 

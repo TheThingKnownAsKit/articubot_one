@@ -6,22 +6,17 @@
   gz_type_name:   gz.msgs.Clock
   direction:      GZ_TO_ROS        # read-only
 
-- ros_topic_name: /cmd_vel
-  gz_topic_name:  /cmd_vel
-  ros_type_name:  geometry_msgs/msg/Twist
-  gz_type_name:   gz.msgs.Twist    # bidirectional default
-
 - ros_topic_name: /lidar2
   gz_topic_name:  /lidar2
   ros_type_name:  sensor_msgs/msg/LaserScan
   gz_type_name:   gz.msgs.LaserScan
   direction:      GZ_TO_ROS
 
-- ros_topic_name: /odom
-  gz_topic_name: /odom
-  ros_type_name: nav_msgs/msg/Odometry
-  gz_type_name: gz.msgs.Odometry
-  direction: GZ_TO_ROS
+# - ros_topic_name: /odom
+#   gz_topic_name: /odom
+#   ros_type_name: nav_msgs/msg/Odometry
+#   gz_type_name: gz.msgs.Odometry
+#   direction: GZ_TO_ROS
 
 
 # If using a depth AND rgb sensing camera:
