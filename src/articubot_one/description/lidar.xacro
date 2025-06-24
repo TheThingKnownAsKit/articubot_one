@@ -30,7 +30,6 @@
     <sensor name="lidar_sensor" type="gpu_lidar">
         <update_rate>10</update_rate>               <!-- 10 Hz scanning frequency -->
         <topic>lidar2</topic>                      <!-- Gazebo transport topic name -->
-        <gz_frame_id>lidar_link</gz_frame_id>      <!-- frame ID for Gazebo messages -->
         <lidar>
         <scan>
             <horizontal>
@@ -51,7 +50,6 @@
             <mean>0.0</mean>
             <stddev>0.01</stddev>                  <!-- standard deviation of noise -->
         </noise>
-        <frame_id>lidar_link</frame_id>          <!-- frame for ROS messages -->
         </lidar>
         <always_on>1</always_on>
         <visualize>true</visualize>
