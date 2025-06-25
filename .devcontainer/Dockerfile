@@ -53,7 +53,3 @@ RUN rosdep update
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source install/setup.bash" >> ~/.bashrc
 # Note that sourcing install will fail the first time if the package was not built, this is fine
-
-################################
-## ADD ANY CUSTOM SETUP BELOW ##
-################################

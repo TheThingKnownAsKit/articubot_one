@@ -17,5 +17,8 @@
             "ms-vscode.cmake-tools"
         ]
     }
-  }
+  },
+  "runArgs": ["--gpus", "all"],
+  "remoteUser": "ubuntu",
+  "updateRemoteUserUID": false
 }
