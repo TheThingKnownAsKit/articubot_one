@@ -1,10 +1,11 @@
 services:
   dev:
+    runtime: nvidia
     build:
       context: ..                 # build context is the root workspace directory
       dockerfile: .devcontainer/Dockerfile
-    image: articubot_one:latest  # tag the image (optional)
-    container_name: articubot_dev
+    image: REPOSITORY_NAME:latest  # tag the image (optional)
+    container_name: CHANGEME
     # Mount the workspace into the container (for live development)
     volumes:
       - ../..:/workspace:rw    # Mount the project root (parent of .devcontainer) to /workspace in container
@@ -12,15 +13,20 @@ services:
     environment:
       - DISPLAY=${DISPLAY}         # Forward host X display (for GUI)
       - LIBGL_ALWAYS_SOFTWARE=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
     network_mode: host            # Use host networking for ROS 2 (enables multicast DDS discovery)
     tty: true
     stdin_open: true
     devices:
-    - /dev/dri:/devi/dri
+    - /dev/dri:/devi/dri          # This gives it access to all devices, which may not be desirable for you
+    # For privileged camera / GPU nodes
+    device_cgroup_rules:
+      - 'c 195:* rmw'
 
   docker_git:
     image: alpine/git:latest      # Small image with git
-    container_name: articubot_git
+    container_name: CHANGME
     volumes:
       - ~/.ssh:/root/.ssh:ro      # Mount host SSH keys (read-only)
       - ~/.gitconfig:/root/.gitconfig:ro  # Mount host Git config (read-only)

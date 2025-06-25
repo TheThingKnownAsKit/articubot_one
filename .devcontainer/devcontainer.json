@@ -1,11 +1,11 @@
 {
   "name": "ROS2 Dev",
   "dockerComposeFile": [
-    "docker-compose.yaml"
+    "compose.yaml"
   ],
   "service": "dev",
   "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
-  "shutdownAction": "stopCompose",  // stop containers on closing
+  "shutdownAction": "stopCompose", 
   "customizations": {
     "vscode": {
       "extensions": [
@@ -17,5 +17,6 @@
             "ms-vscode.cmake-tools"
         ]
     }
-  }
+  },
+  "runArgs": ["--gpus", "all"]
 }
