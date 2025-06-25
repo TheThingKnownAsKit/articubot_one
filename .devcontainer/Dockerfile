@@ -49,13 +49,10 @@ RUN sudo apt install -y git
 # Rosdep update
 RUN rosdep update
 
-# Build the repository
-WORKDIR workspace/${localWorkspaceFolderBasename}
-RUN colcon build
-
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source install/setup.bash" >> ~/.bashrc
+# Note that sourcing install will fail the first time if the package was not built, this is fine
 
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
