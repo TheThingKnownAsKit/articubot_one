@@ -14,11 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-${ROS_DISTRO}-gz-ros2-control \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Nvidia userspace library matching host driver
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-utils-$(nvidia-smi --query-gpu=driver_version --format=csv,noheader) && \
-    rm -rf /var/lib/apt/lists/*
-
 # (Optional) Install additional tools: build essentials, Python3 pip, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential python3-pip
 
