@@ -75,7 +75,7 @@ def generate_launch_description():
     # ────────────────────────────── Create a robot_state_publisher node
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(pkg_bot, 'launch', 'robot_state_publisher.launch.py')]),
-        launch_arguments={'use_sim_time': 'true'}.items()
+        launch_arguments={'use_sim_time': 'true', 'use_ros2_control': 'true'}.items()
     )
 
     # ────────────────────────────── Spawn the controllers
