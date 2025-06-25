@@ -6,13 +6,16 @@
   ],
   "service": "dev",
   "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
-  "shutdownAction": "stopCompose",
+  "shutdownAction": "stopCompose", 
   "customizations": {
     "vscode": {
       "extensions": [
             "ms-vscode.cpptools",
             "ms-python.python",
-            "github.vscode-pull-request-github"
+            "github.vscode-pull-request-github",
+            "smilerobotics.urdf",
+            "morningfrog.urdf-visualizer",
+            "ms-vscode.cmake-tools"
         ]
     }
   },
